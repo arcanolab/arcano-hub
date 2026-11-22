@@ -1,6 +1,41 @@
 {
   "modules": [
     {
+      "id": "arcano-hub",
+      "exp": "EXP-00",
+      "title": "Arcano Lab Hub",
+      "version": "1.0.3",
+      "date": "2026-11-22",
+      "tier": "free",
+      "free": true,
+      "manifest": "https://github.com/arcanolab/arcano-hub/releases/latest/download/module.json",
+      "url": "https://github.com/arcanolab/arcano-hub",
+      "repo": "arcanolab/arcano-hub",
+      "summary": {
+        "en": "This Hub: the Arcano Lab catalog, install links, update notices and the shared Arcano Lab button group.",
+        "pt-BR": "Este Hub: o catálogo do Arcano Lab, os links de instalação, os avisos de update e o grupo de botões do Arcano Lab."
+      },
+      "changelog": [
+        {
+          "version": "1.0.3",
+          "date": "2026-11-22",
+          "kind": "update",
+          "notes": {
+            "en": [
+              "New versions show up sooner: the Hub checks GitHub every 30 minutes",
+              "Refresh button next to the Hub version",
+              "Release notes from GitHub appear in Lab notes automatically"
+            ],
+            "pt-BR": [
+              "Versões novas aparecem mais cedo: o Hub confere o GitHub a cada 30 minutos",
+              "Botão de atualizar ao lado da versão do Hub",
+              "As notas do release do GitHub entram sozinhas nas Anotações"
+            ]
+          }
+        }
+      ]
+    },
+    {
       "id": "expand-header-buttons",
       "exp": "EXP-01",
       "title": "Expand Header Buttons",
