@@ -15,7 +15,10 @@
       "lab": "Modules",
       "news": "Lab notes",
       "account": "Account",
-      "maps": "Maps"
+      "maps": "Maps",
+      "labOne": "Module",
+      "mapsOne": "Map",
+      "newsOne": "Lab note"
     },
     "openPatreon": "Arcano Lab on Patreon",
     "online": "online",

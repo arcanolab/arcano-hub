@@ -53,10 +53,13 @@ export function renderHub(s, t) {
 function renderSide(s, t) {
   const p = s.patron;
   const updatesIn = maps => s.catalog.filter(m => (isMap(m) === maps) && (moduleState(m, s.local[m.id], p) === "update")).length;
-  const tab = (id, icon, label, count) => `
+  // total: quantos itens a aba tem (vai na frente do nome); count: quantos updates esperam (selo à direita)
+  const tab = (id, icon, total, count) => `
     <button type="button" class="${s.tab === id ? "active" : ""}" data-action="hub-tab" data-tab="${id}" ${p || (id !== "account") ? "" : "disabled"}>
-      <i class="fa-solid ${icon}"></i>${esc(label)}${count ? `<span class="al-count">${count}</span>` : ""}
+      <i class="fa-solid ${icon}"></i>${total === null ? "" : `<b class="al-total">${total}</b>`}<span>${esc(t(`tab.${id}${total === 1 ? "One" : ""}`))}</span>${count ? `<span class="al-count">${count}</span>` : ""}
     </button>`;
+  const nMaps = s.catalog.filter(isMap).length;
+  const nNotes = s.catalog.reduce((n, m) => n + (m.changelog?.length ?? 0), 0);
   return `
   <aside class="al-side">
     <div class="al-brand">
@@ -87,10 +90,10 @@ function renderSide(s, t) {
     </div>`}
 
     <nav class="al-nav">
-      ${tab("lab", "fa-flask", t("tab.lab"), updatesIn(false))}
-      ${s.catalog.some(isMap) ? tab("maps", "fa-map", t("tab.maps"), updatesIn(true)) : ""}
-      ${tab("news", "fa-scroll", t("tab.news"))}
-      ${s.login ? tab("account", "fa-id-card", t("tab.account")) : ""}
+      ${tab("lab", "fa-flask", s.catalog.length - nMaps, updatesIn(false))}
+      ${nMaps ? tab("maps", "fa-map", nMaps, updatesIn(true)) : ""}
+      ${tab("news", "fa-scroll", nNotes)}
+      ${s.login ? tab("account", "fa-id-card", null) : ""}
     </nav>
 
     <div class="al-side-foot">

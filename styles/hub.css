@@ -541,3 +541,8 @@ i.al-hub-menu-icon {
   background: #ff424d; color: #fff; font-weight: 600; font-size: 12px; text-decoration: none; text-shadow: none;
 }
 .al-sign a.al-sign-patreon:hover { filter: brightness(1.1); text-decoration: none; }
+
+/* Lista lateral: alinhada à esquerda, com o total de itens na frente do nome */
+.arcanolab .al-nav button { justify-content: flex-start; }
+.arcanolab .al-nav button .al-total { min-width: 1.4em; text-align: right; font-weight: 600; color: var(--al-gold); }
+.arcanolab .al-nav button .al-count { margin-left: auto; }

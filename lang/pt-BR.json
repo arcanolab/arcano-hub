@@ -15,7 +15,10 @@
       "lab": "Módulos",
       "news": "Anotações",
       "account": "Conta",
-      "maps": "Mapas"
+      "maps": "Mapas",
+      "labOne": "Módulo",
+      "mapsOne": "Mapa",
+      "newsOne": "Anotação"
     },
     "openPatreon": "Arcano Lab no Patreon",
     "online": "online",
