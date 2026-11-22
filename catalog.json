@@ -21,15 +21,15 @@
           "date": "2026-11-22",
           "kind": "update",
           "notes": {
-            "en": [
-              "New versions show up sooner: the Hub checks GitHub every 30 minutes",
-              "Refresh button next to the Hub version",
-              "Release notes from GitHub appear in Lab notes automatically"
-            ],
             "pt-BR": [
               "Versões novas aparecem mais cedo: o Hub confere o GitHub a cada 30 minutos",
               "Botão de atualizar ao lado da versão do Hub",
               "As notas do release do GitHub entram sozinhas nas Anotações"
+            ],
+            "en": [
+              "New versions show up sooner: the Hub checks GitHub every 30 minutes",
+              "Refresh button next to the Hub version",
+              "Release notes from GitHub appear in Lab notes automatically"
             ]
           }
         }
@@ -57,19 +57,19 @@
           "date": "2026-11-20",
           "kind": "update",
           "notes": {
-            "en": [
-              "Foundry VTT v14 support",
-              "Button position: left bar, right bar or inside the window header",
-              "Sheets-only mode, check all / uncheck all",
-              "Settings apply immediately",
-              "English and Brazilian Portuguese translations"
-            ],
             "pt-BR": [
               "Suporte ao Foundry VTT v14",
               "Posição dos botões: barra esquerda, barra direita ou no cabeçalho da janela",
               "Modo só nas fichas, marcar e desmarcar todos",
               "As configurações valem na hora",
               "Traduções em inglês e português do Brasil"
+            ],
+            "en": [
+              "Foundry VTT v14 support",
+              "Button position: left bar, right bar or inside the window header",
+              "Sheets-only mode, check all / uncheck all",
+              "Settings apply immediately",
+              "English and Brazilian Portuguese translations"
             ]
           }
         }
@@ -122,14 +122,6 @@
           "date": "2026-11-19",
           "kind": "release",
           "notes": {
-            "en": [
-              "16k city map with names the GM shows and hides one by one",
-              "Journals for every ward and location, with read-aloud text, hooks and rumors",
-              "27 NPCs with sheet, portrait and token",
-              "Street and house lights at night, rain and lightning",
-              "Ambient sounds and 5 playlists",
-              "One-click import from the Adventure compendium"
-            ],
             "pt-BR": [
               "Mapa da cidade em 16k com nomes que o mestre mostra e esconde um a um",
               "Diários de cada ala e local, com texto para ler em voz alta, ganchos e rumores",
@@ -137,10 +129,19 @@
               "Luzes de rua e das casas à noite, chuva e raios",
               "Sons ambientes e 5 playlists",
               "Importação em um clique pelo compêndio de Aventura"
+            ],
+            "en": [
+              "16k city map with names the GM shows and hides one by one",
+              "Journals for every ward and location, with read-aloud text, hooks and rumors",
+              "27 NPCs with sheet, portrait and token",
+              "Street and house lights at night, rain and lightning",
+              "Ambient sounds and 5 playlists",
+              "One-click import from the Adventure compendium"
             ]
           }
         }
-      ]
+      ],
+      "notesLimit": 1
     }
   ]
 }
