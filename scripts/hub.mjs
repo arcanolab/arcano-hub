@@ -123,6 +123,8 @@ const Hub = {
       } catch(e) {}
     }
     if ( !PATREON_LOGIN ) await this.applyLiveVersions({force});
+    // "notesLimit" no catálogo: quantas anotações do item aparecem (1 = só a última, 0 = nenhuma; sem o campo = todas)
+    this.catalog = this.catalog.map(m => Number.isInteger(m.notesLimit) ? {...m, changelog: (m.changelog ?? []).slice(0, Math.max(0, m.notesLimit))} : m);
     return this.catalog;
   },
 

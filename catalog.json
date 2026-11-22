@@ -4,7 +4,7 @@
       "id": "arcano-hub",
       "exp": "EXP-00",
       "title": "Arcano Lab Hub",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "date": "2026-11-22",
       "tier": "free",
       "free": true,
@@ -16,6 +16,19 @@
         "pt-BR": "Este Hub: o catálogo do Arcano Lab, os links de instalação, os avisos de update e o grupo de botões do Arcano Lab."
       },
       "changelog": [
+        {
+          "version": "1.0.4",
+          "date": "2026-11-22",
+          "kind": "update",
+          "notes": {
+            "pt-BR": [
+              "Cada item do catálogo pode dizer quantas anotações mostra (por exemplo, só a mais recente)"
+            ],
+            "en": [
+              "Each catalog item can set how many lab notes it shows (for example, only the latest)"
+            ]
+          }
+        },
         {
           "version": "1.0.3",
           "date": "2026-11-22",
