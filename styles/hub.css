@@ -506,3 +506,38 @@
   background: center / contain no-repeat;
 }
 #scene-controls .al-tool-img:hover::before { filter: drop-shadow(0 0 4px rgba(226, 184, 92, 0.8)); }
+
+/* Subseção do Laboratório (Mapas) */
+.arcanolab .al-section {
+  display: flex; align-items: center; gap: 8px;
+  margin: 26px 0 12px; padding-bottom: 8px;
+  border-bottom: 1.5px dashed var(--al-border);
+  font: 600 20px/1.2 var(--al-display); color: var(--al-text);
+}
+.arcanolab .al-section i { font-size: 14px; color: var(--al-gold); }
+.arcanolab .al-section b { font: 500 11px/1 var(--al-mono); color: var(--al-text-2); margin-left: 2px; }
+
+/* Ícone do Hub no botão "Abrir o Hub" das configurações */
+i.al-hub-menu-icon {
+  display: inline-block; width: 1.25em; height: 1.25em; vertical-align: -0.25em;
+  background: url("../assets/hub-control.svg") center / contain no-repeat;
+}
+
+/* Assinatura do Arcano Lab nas configurações do Hub */
+.al-sign {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  margin-top: 14px; padding: 12px 14px;
+  border: 1px solid rgba(226, 184, 92, 0.35); border-radius: 8px;
+  background: linear-gradient(135deg, rgba(124, 77, 219, 0.18), rgba(21, 16, 33, 0.35));
+}
+.al-sign .al-sign-brand { display: flex; align-items: center; gap: 10px; }
+.al-sign .al-sign-brand img { width: 38px; height: 38px; border: none; }
+.al-sign .al-sign-brand div { display: flex; flex-direction: column; line-height: 1.25; }
+.al-sign .al-sign-brand strong { font-size: 14px; }
+.al-sign .al-sign-brand span { font-size: 11px; opacity: 0.75; }
+.al-sign .al-sign-brand em { font-size: 12px; color: #e2b85c; }
+.al-sign a.al-sign-patreon {
+  display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border-radius: 6px;
+  background: #ff424d; color: #fff; font-weight: 600; font-size: 12px; text-decoration: none; text-shadow: none;
+}
+.al-sign a.al-sign-patreon:hover { filter: brightness(1.1); text-decoration: none; }

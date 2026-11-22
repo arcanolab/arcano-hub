@@ -152,12 +152,15 @@ function renderLab(s, t) {
   const show = rows.filter(r => s.filter === "all" || r.state === s.filter
     || (s.filter === "installed" && ["ok", "update", "inactive"].includes(r.state)));
   const updates = counts.update ?? 0;
+  // "category": "maps" no catálogo põe o item na subseção de mapas
+  const maps = show.filter(r => r.m.category === "maps");
+  const modules = show.filter(r => r.m.category !== "maps");
 
   return `
   <div class="al-page-head">
     <div>
-      <div class="al-kicker">${esc(t("lab.kicker", {n: rows.length}))}</div>
-      <h1 class="al-title">${t("lab.title")}</h1>
+      <div class="al-kicker">${esc(t("lab.kicker"))}</div>
+      <h1 class="al-title">${t("lab.title", {n: rows.length})}</h1>
     </div>
     ${updates ? `<span class="al-note">← ${esc(t("lab.note", {n: updates}))}</span>` : ""}
   </div>
@@ -166,9 +169,10 @@ function renderLab(s, t) {
       `<button type="button" class="al-chip ${s.filter === k ? "active" : ""}" data-action="filter" data-filter="${k}">${esc(t(label))}<b>${counts[k] ?? 0}</b></button>`).join("")}
   </div>
   ${s.copied ? `<div class="al-howto">${t("howto", {title: esc(s.copied)})}</div>` : ""}
-  <div class="al-grid">
-    ${show.map(r => renderCard(s, t, r.m, r.state)).join("")}
-  </div>`;
+  ${modules.length ? `<div class="al-grid">${modules.map(r => renderCard(s, t, r.m, r.state)).join("")}</div>` : ""}
+  ${maps.length ? `
+  <h2 class="al-section"><i class="fa-solid fa-map"></i>${esc(t("lab.maps"))}<b>${maps.length}</b></h2>
+  <div class="al-grid">${maps.map(r => renderCard(s, t, r.m, r.state)).join("")}</div>` : ""}`;
 }
 
 function renderCard(s, t, m, state) {

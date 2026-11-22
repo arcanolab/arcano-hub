@@ -12,7 +12,7 @@
       "archmage": "Archmage"
     },
     "tab": {
-      "lab": "O Laboratório",
+      "lab": "Laboratório",
       "news": "Anotações",
       "account": "Conta"
     },
@@ -34,9 +34,10 @@
     "cancel": "Cancelar",
     "free": "Grátis",
     "lab": {
-      "kicker": "Na prateleira: {n}",
-      "title": "O <em>Laboratório</em>",
-      "note": "{n} update(s) esperando"
+      "kicker": "Experimentos na prateleira",
+      "title": "{n} <em>Laboratório</em>",
+      "note": "{n} update(s) esperando",
+      "maps": "Mapas"
     },
     "filter": {
       "all": "Todos",
@@ -108,7 +109,17 @@
       "notify": {
         "name": "Avisos de update",
         "hint": "Avisa o mestre quando um módulo do Arcano Lab tiver versão nova."
+      },
+      "lang": {
+        "name": "Idioma do Hub",
+        "hint": "Idioma da janela, dos avisos e das configurações do Hub. \"Seguir o Foundry\" usa o mesmo idioma do Foundry. Recarrega a página.",
+        "auto": "Seguir o Foundry"
       }
+    },
+    "sign": {
+      "by": "por Arcano Lab",
+      "tagline": "Módulos novos para Foundry todo mês.",
+      "cta": "Apoie no Patreon"
     }
   }
 }

@@ -12,7 +12,7 @@
       "archmage": "Archmage"
     },
     "tab": {
-      "lab": "The Lab",
+      "lab": "Lab",
       "news": "Lab notes",
       "account": "Account"
     },
@@ -34,9 +34,10 @@
     "cancel": "Cancel",
     "free": "Free",
     "lab": {
-      "kicker": "On the shelf: {n}",
-      "title": "The <em>Lab</em>",
-      "note": "{n} update(s) waiting"
+      "kicker": "Experiments on the shelf",
+      "title": "{n} <em>Lab</em>",
+      "note": "{n} update(s) waiting",
+      "maps": "Maps"
     },
     "filter": {
       "all": "All",
@@ -108,7 +109,17 @@
       "notify": {
         "name": "Update notices",
         "hint": "Tell the GM when an Arcano Lab module has a new version."
+      },
+      "lang": {
+        "name": "Hub language",
+        "hint": "Language of the Hub window, notices and settings. \"Follow Foundry\" uses the same language as Foundry. Reloads the page.",
+        "auto": "Follow Foundry"
       }
+    },
+    "sign": {
+      "by": "by Arcano Lab",
+      "tagline": "New Foundry modules every month.",
+      "cta": "Support on Patreon"
     }
   }
 }

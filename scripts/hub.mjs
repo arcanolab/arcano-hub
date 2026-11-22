@@ -28,8 +28,47 @@ const VERSIONS_TTL = 6 * 60 * 60 * 1000;   // relê as versões no GitHub a cada
 const PATREON_LOGIN = false;
 const CATALOG_URL = "https://raw.githubusercontent.com/arcanolab/arcano-hub/main/catalog.json";
 
+/* Idioma do Hub: segue o Foundry ou é forçado (en / pt-BR) na configuração do módulo. */
+const LANGS = {auto: "ALHUB.settings.lang.auto", en: "English", "pt-BR": "Português (Brasil)"};
+let dictionary = null;
+const translate = key => {
+  if ( dictionary ) {
+    const v = foundry.utils.getProperty(dictionary, key);
+    if ( typeof v === "string" ) return v;
+  }
+  return game.i18n.localize(key);
+};
+/** Idioma em uso no Hub: "pt-BR" ou "en" */
+const hubLang = () => {
+  const chosen = game.settings.get(MOD, "lang");
+  if ( chosen && (chosen !== "auto") ) return chosen;
+  return game.i18n.lang?.startsWith("pt") ? "pt-BR" : "en";
+};
+async function loadLanguage() {
+  const chosen = game.settings.get(MOD, "lang");
+  if ( !(chosen in LANGS) || (chosen === "auto") ) return;
+  try { dictionary = await (await fetch(foundry.utils.getRoute(`modules/${MOD}/lang/${chosen}.json`))).json(); }
+  catch(err) { console.warn(`${MOD} | idioma ${chosen} não carregou`, err); }
+}
+/** Nome, dica e opções das configurações no idioma do Hub */
+function renameSettings() {
+  for ( const [id, cfg] of game.settings.settings ) {
+    if ( !id.startsWith(`${MOD}.`) ) continue;
+    if ( cfg._alName === undefined ) { cfg._alName = cfg.name; cfg._alHint = cfg.hint; }
+    cfg.name = cfg._alName ? translate(cfg._alName) : cfg._alName;
+    cfg.hint = cfg._alHint ? translate(cfg._alHint) : cfg._alHint;
+  }
+  for ( const [id, menu] of game.settings.menus ) {
+    if ( !id.startsWith(`${MOD}.`) ) continue;
+    if ( menu._alName === undefined ) { menu._alName = menu.name; menu._alLabel = menu.label; menu._alHint = menu.hint; }
+    menu.name = translate(menu._alName); menu.label = translate(menu._alLabel); menu.hint = translate(menu._alHint);
+  }
+  const lang = game.settings.settings.get(`${MOD}.lang`);
+  if ( lang ) lang.choices = {...LANGS, auto: translate(LANGS.auto)};
+}
+
 const t = (key, data = {}) => {
-  let s = game.i18n.localize(`ALHUB.${key}`);
+  let s = translate(`ALHUB.${key}`);
   for ( const [k, v] of Object.entries(data) ) s = s.replaceAll(`{${k}}`, v);
   return s;
 };
@@ -152,7 +191,7 @@ class ArcanoHubApp extends ApplicationV2 {
   static DEFAULT_OPTIONS = {
     id: "arcano-hub",
     classes: ["arcanolab", "al-hub"],
-    window: {title: "ALHUB.title", resizable: true},
+    window: {title: "Arcano Lab Hub", resizable: true},
     position: {width: 1000, height: 680},
     actions: {
       // "tab" é ação reservada do ApplicationV2 (chama changeTab), por isso o nome próprio
@@ -188,7 +227,7 @@ class ArcanoHubApp extends ApplicationV2 {
       catalog: Hub.catalog,
       local: Hub.localModules(),
       online: Hub.online,
-      lang: game.i18n.lang?.startsWith("pt") ? "pt-BR" : "en",
+      lang: hubLang(),
       assets: ASSETS,
       patreonUrl: PATREON_URL,
       discordUrl: DISCORD_URL,
@@ -392,10 +431,39 @@ Hooks.once("init", () => {
   });
   game.settings.registerMenu(MOD, "open", {
     name: "ALHUB.title", label: "ALHUB.settings.open", hint: "ALHUB.settings.openHint",
-    icon: "fa-solid fa-flask", type: OpenHubMenu, restricted: true
+    icon: "al-hub-menu-icon", type: OpenHubMenu, restricted: true
+  });
+  game.settings.register(MOD, "lang", {
+    name: "ALHUB.settings.lang.name", hint: "ALHUB.settings.lang.hint",
+    scope: "client", config: true, type: String, default: "auto", choices: LANGS, requiresReload: true
   });
   game.modules.get(MOD).api = ArcanoHub;
   globalThis.ArcanoHub = ArcanoHub;
+});
+
+/* Idioma do Hub: carrega antes de a tela montar e traduz as configurações */
+Hooks.once("setup", async () => {
+  await loadLanguage();
+  renameSettings();
+});
+Hooks.once("i18nInit", renameSettings);
+
+/* Assinatura do Arcano Lab no fim das configurações do Hub */
+Hooks.on("renderSettingsConfig", (app, element) => {
+  const root = element instanceof HTMLElement ? element : element?.[0];
+  const field = root?.querySelector(`[name="${MOD}.notify"], [name="${MOD}.lang"]`);
+  if ( !field ) return;
+  const box = field.closest(".tab[data-tab]") ?? field.closest("section") ?? field.closest(".form-group")?.parentElement;
+  if ( !box || box.querySelector(".al-sign") ) return;
+  const div = document.createElement("div");
+  div.className = "al-sign";
+  div.innerHTML = `
+    <div class="al-sign-brand">
+      <img src="${ASSETS}/arcanolab.svg" alt="Arcano Lab">
+      <div><strong>Arcano Lab Hub</strong><span>${t("sign.by")}</span><em>${t("sign.tagline")}</em></div>
+    </div>
+    <a class="al-sign-patreon" href="${PATREON_URL}" target="_blank" rel="noopener"><i class="fa-brands fa-patreon"></i> ${t("sign.cta")}</a>`;
+  box.append(div);
 });
 
 /* Botão do Hub na aba de Configurações (só o mestre) */
