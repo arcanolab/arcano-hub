@@ -40,6 +40,49 @@
         }
       ],
       "repo": "arcanolab/arcano-expand-header-buttons"
+    },
+    {
+      "id": "arcano-westruun",
+      "exp": "MAP-01",
+      "title": "Westruun",
+      "version": "0.2.0",
+      "date": "2026-11-19",
+      "tier": "free",
+      "free": true,
+      "category": "maps",
+      "cover": "map.svg",
+      "manifest": "https://github.com/arcanolab/arcano-westruun/releases/latest/download/module.json",
+      "url": "https://github.com/arcanolab/arcano-westruun",
+      "repo": "arcanolab/arcano-westruun",
+      "summary": {
+        "en": "The city of Westruun (Tal'Dorei) in 16k: journals for every ward and location, 27 NPCs, interior scenes, night lights, weather and ambient sound. Large download (about 570 MB).",
+        "pt-BR": "A cidade de Westruun (Tal'Dorei) em 16k: diários de cada ala e local, 27 NPCs, cenas internas, luzes à noite, clima e som ambiente. Download grande (cerca de 570 MB)."
+      },
+      "changelog": [
+        {
+          "version": "0.2.0",
+          "date": "2026-11-19",
+          "kind": "release",
+          "notes": {
+            "en": [
+              "16k city map with names the GM shows and hides one by one",
+              "Journals for every ward and location, with read-aloud text, hooks and rumors",
+              "27 NPCs with sheet, portrait and token",
+              "Street and house lights at night, rain and lightning",
+              "Ambient sounds and 5 playlists",
+              "One-click import from the Adventure compendium"
+            ],
+            "pt-BR": [
+              "Mapa da cidade em 16k com nomes que o mestre mostra e esconde um a um",
+              "Diários de cada ala e local, com texto para ler em voz alta, ganchos e rumores",
+              "27 NPCs com ficha, retrato e token",
+              "Luzes de rua e das casas à noite, chuva e raios",
+              "Sons ambientes e 5 playlists",
+              "Importação em um clique pelo compêndio de Aventura"
+            ]
+          }
+        }
+      ]
     }
   ]
 }
