@@ -4,7 +4,7 @@
       "id": "arcano-hub",
       "exp": "EXP-00",
       "title": "Arcano Lab Hub",
-      "version": "1.0.4",
+      "version": "1.0.0",
       "date": "2026-11-22",
       "tier": "free",
       "free": true,
@@ -17,32 +17,23 @@
       },
       "changelog": [
         {
-          "version": "1.0.4",
+          "version": "1.0.0",
           "date": "2026-11-22",
-          "kind": "update",
+          "kind": "release",
           "notes": {
             "pt-BR": [
-              "Cada item do catálogo pode dizer quantas anotações mostra (por exemplo, só a mais recente)"
+              "Catálogo do Arcano Lab com módulos e mapas, sempre em dia pelo GitHub",
+              "Aviso de versão nova e link de instalação de cada item",
+              "Anotações do Lab com o que mudou em cada versão",
+              "Grupo de botões do Arcano Lab na barra à esquerda",
+              "Em português e inglês"
             ],
             "en": [
-              "Each catalog item can set how many lab notes it shows (for example, only the latest)"
-            ]
-          }
-        },
-        {
-          "version": "1.0.3",
-          "date": "2026-11-22",
-          "kind": "update",
-          "notes": {
-            "pt-BR": [
-              "Versões novas aparecem mais cedo: o Hub confere o GitHub a cada 30 minutos",
-              "Botão de atualizar ao lado da versão do Hub",
-              "As notas do release do GitHub entram sozinhas nas Anotações"
-            ],
-            "en": [
-              "New versions show up sooner: the Hub checks GitHub every 30 minutes",
-              "Refresh button next to the Hub version",
-              "Release notes from GitHub appear in Lab notes automatically"
+              "Arcano Lab catalog with modules and maps, always up to date from GitHub",
+              "New version notices and an install link for each item",
+              "Lab notes with what changed in each version",
+              "Arcano Lab button group on the left bar",
+              "In English and Brazilian Portuguese"
             ]
           }
         }
