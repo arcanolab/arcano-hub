@@ -84,7 +84,7 @@
       "id": "arcano-westruun",
       "exp": "MAP-01",
       "title": "Westruun",
-      "version": "0.3.0",
+      "version": "1.0.0",
       "date": "2026-11-22",
       "tier": "free",
       "free": true,
@@ -94,10 +94,35 @@
       "url": "https://github.com/arcanolab/arcano-westruun",
       "repo": "arcanolab/arcano-westruun",
       "summary": {
-        "en": "The city of Westruun (Tal'Dorei) in 16k: journals for every ward and location, 27 NPCs, interior scenes, night lights, weather and ambient sound. Large download (about 570 MB).",
-        "pt-BR": "A cidade de Westruun (Tal'Dorei) em 16k: diários de cada ala e local, 27 NPCs, cenas internas, luzes à noite, clima e som ambiente. Download grande (cerca de 570 MB)."
+        "en": "The city of Westruun (Tal'Dorei) in 16k: journals for every ward and location, 56 NPCs, interior scenes, night lights, weather and ambient sound. Large download (about 570 MB).",
+        "pt-BR": "A cidade de Westruun (Tal'Dorei) em 16k: diários de cada ala e local, 56 NPCs, cenas internas, luzes à noite, clima e som ambiente. Download grande (cerca de 570 MB)."
       },
       "changelog": [
+        {
+          "version": "1.0.0",
+          "date": "2026-11-22",
+          "kind": "release",
+          "notes": {
+            "pt-BR": [
+              "Mapa da cidade em 16k com nomes de alas, portões e locais que o mestre mostra ou esconde um a um",
+              "Um diário para cada ala e local: descrição para os jogadores, guia do mestre, ganchos e rumores",
+              "Uma cena pronta para cada ilustração, com botões de Ativar cena dentro do diário e uma nota de diário dentro de cada cena",
+              "56 NPCs com ficha, retrato e token",
+              "Luzes de rua e das casas que acendem à noite, nuvens sobre a cidade, chuva, neblina e raios sobre a Torre Greystone",
+              "Sons ambientes e 5 playlists",
+              "Painel do mestre, em português ou inglês"
+            ],
+            "en": [
+              "16k city map with ward, gate and location names the GM shows or hides one by one",
+              "A journal for every ward and location: description for players, GM guide, hooks and rumors",
+              "A ready scene for every illustration, with Activate scene buttons inside the journal and a journal note inside each scene",
+              "56 NPCs with sheet, portrait and token",
+              "Street and house lights that turn on at night, clouds over the city, rain, fog and lightning over Greystone Tower",
+              "Ambient sounds and 5 playlists",
+              "GM panel, in English or Portuguese"
+            ]
+          }
+        },
         {
           "version": "0.3.0",
           "date": "2026-11-22",
