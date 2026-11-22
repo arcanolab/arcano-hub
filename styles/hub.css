@@ -546,3 +546,11 @@ i.al-hub-menu-icon {
 .arcanolab .al-nav button { justify-content: flex-start; }
 .arcanolab .al-nav button .al-total { min-width: 1.4em; text-align: right; font-weight: 600; color: var(--al-gold); }
 .arcanolab .al-nav button .al-count { margin-left: auto; }
+
+/* Botão de procurar versões novas, ao lado da versão do Hub */
+.arcanolab .al-meta { display: flex; align-items: center; gap: 6px; }
+.arcanolab .al-meta .al-refresh {
+  width: 22px; height: 22px; min-height: 0; padding: 0; margin-left: auto;
+  background: none; border: none; box-shadow: none; color: var(--al-text-2); cursor: pointer; font-size: 11px;
+}
+.arcanolab .al-meta .al-refresh:hover { color: var(--al-gold); }

@@ -19,7 +19,7 @@ const DISCORD_URL = "";
 const DEFAULT_SERVER = "https://hub.arcanolab.workers.dev";
 const CACHE_KEY = `${MOD}.catalog`;
 const VERSIONS_KEY = `${MOD}.versions`;
-const VERSIONS_TTL = 6 * 60 * 60 * 1000;   // relê as versões no GitHub a cada 6 h
+const VERSIONS_TTL = 30 * 60 * 1000;       // relê as versões no GitHub a cada 30 min (ou no botão de atualizar)
 
 /**
  * false: o Hub funciona sem servidor. O catálogo vem do GitHub, não há login e o Patreon é só um link.
@@ -98,7 +98,7 @@ const Hub = {
   catalog: [],
   online: false,
 
-  async loadCatalog() {
+  async loadCatalog({force = false} = {}) {
     try {
       let data;
       if ( PATREON_LOGIN ) {
@@ -122,29 +122,36 @@ const Hub = {
         if ( res.ok ) this.catalog = (await res.json()).modules ?? [];
       } catch(e) {}
     }
-    if ( !PATREON_LOGIN ) await this.applyLiveVersions();
+    if ( !PATREON_LOGIN ) await this.applyLiveVersions({force});
     return this.catalog;
   },
 
   /** Sem servidor: a versão de cada módulo público vem do último release do repositório (campo "repo") */
-  async applyLiveVersions() {
+  async applyLiveVersions({force = false} = {}) {
     let saved = {};
     try { saved = JSON.parse(localStorage.getItem(VERSIONS_KEY) ?? "{}"); } catch(e) {}
     const versions = saved.versions ?? {};
-    if ( !saved.at || (Date.now() - saved.at > VERSIONS_TTL) ) {
+    if ( force || !saved.at || (Date.now() - saved.at > VERSIONS_TTL) ) {
       await Promise.all(this.catalog.filter(m => m.repo).map(async m => {
         try {
           const res = await fetch(`https://api.github.com/repos/${m.repo}/releases/latest`, {headers: {Accept: "application/vnd.github+json"}});
           if ( !res.ok ) return;
           const rel = await res.json();
           const version = String(rel.tag_name ?? "").replace(/^v/i, "");
-          if ( version ) versions[m.id] = {version, date: String(rel.published_at ?? "").slice(0, 10)};
+          // as notas do release (linhas que começam com "- ") viram a anotação dessa versão
+          const notes = String(rel.body ?? "").split(/\r?\n/).map(l => l.trim()).filter(l => /^[-*] /.test(l)).map(l => l.slice(2).replace(/\*\*|`/g, "").trim()).slice(0, 8);
+          if ( version ) versions[m.id] = {version, date: String(rel.published_at ?? "").slice(0, 10), notes};
         } catch(e) {}
       }));
       try { localStorage.setItem(VERSIONS_KEY, JSON.stringify({at: Date.now(), versions})); } catch(e) {}
     }
     // só troca quando o release é mais novo que o que está escrito no catálogo
-    this.catalog = this.catalog.map(m => (versions[m.id] && isNewer(versions[m.id].version, m.version)) ? {...m, ...versions[m.id]} : m);
+    this.catalog = this.catalog.map(m => {
+      const live = versions[m.id];
+      if ( !live || !isNewer(live.version, m.version) ) return m;
+      const entry = {version: live.version, date: live.date, kind: "update", notes: live.notes ?? []};
+      return {...m, version: live.version, date: live.date, changelog: [entry, ...(m.changelog ?? [])]};
+    });
   },
 
   /** Confere a assinatura no servidor; se o Patreon não confirmar, desconecta */
@@ -334,7 +341,7 @@ class ArcanoHubApp extends ApplicationV2 {
   }
 
   static async #onRefresh() {
-    await Promise.all([Hub.loadCatalog(), Hub.refreshPatron({quiet: false})]);
+    await Promise.all([Hub.loadCatalog({force: true}), PATREON_LOGIN ? Hub.refreshPatron({quiet: false}) : null]);
     ArcanoHub.updateSidebarBadge();
     this.render();
   }

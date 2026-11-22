@@ -101,7 +101,8 @@ function renderSide(s, t) {
         <i class="fa-brands fa-patreon"></i>${esc(t("openPatreon"))}
       </a>
       ${s.discordUrl ? `<a class="al-btn al-btn--ghost al-btn--block" href="${esc(s.discordUrl)}" target="_blank" rel="noopener"><i class="fa-brands fa-discord"></i>Discord</a>` : ""}
-      <div class="al-meta">Hub v${esc(s.version)} · ${esc(t(s.online ? "online" : "offline"))}</div>
+      <div class="al-meta">Hub v${esc(s.version)} · ${esc(t(s.online ? "online" : "offline"))}
+        <button type="button" class="al-refresh" data-action="refresh" data-tooltip="${esc(t("refresh"))}" aria-label="${esc(t("refresh"))}"><i class="fa-solid fa-rotate"></i></button></div>
     </div>
   </aside>`;
 }

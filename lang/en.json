@@ -129,6 +129,7 @@
       "kicker": "Lab cartography",
       "title": "{n} <em>Maps</em>",
       "titleOne": "1 <em>Map</em>"
-    }
+    },
+    "refresh": "Check for new versions now"
   }
 }
