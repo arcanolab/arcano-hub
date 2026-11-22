@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <!-- Mapa dobrado com rota e marcador -->
+  <g stroke="#E2B85C" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M5 14 17 9.5v29L5 43Z" fill="#7C4DDB"/>
+    <path d="M17 9.5 31 14v29l-14-4.5Z" fill="#5B36B0"/>
+    <path d="M31 14 43 9.5v29L31 43Z" fill="#7C4DDB"/>
+  </g>
+  <path d="M10 35c4-6 8 1 12-4s2-6 6-8" fill="none" stroke="#F5DC9A" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="1 4.2"/>
+  <path d="m8 32.6 4 4m0-4-4 4" stroke="#F5DC9A" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M33.5 4.5c-4.6 0-8 3.5-8 7.8 0 5.6 8 12.2 8 12.2s8-6.6 8-12.2c0-4.3-3.4-7.8-8-7.8Z" fill="#E2B85C" stroke="#151021" stroke-width="2"/>
+  <circle cx="33.5" cy="12.3" r="3" fill="#3A2470"/>
+</svg>

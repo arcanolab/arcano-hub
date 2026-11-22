@@ -1,0 +1,45 @@
+{
+  "modules": [
+    {
+      "id": "expand-header-buttons",
+      "exp": "EXP-01",
+      "title": "Expand Header Buttons",
+      "version": "1.0.1",
+      "date": "2026-11-20",
+      "tier": "free",
+      "free": true,
+      "cover": "header.svg",
+      "highlight": true,
+      "manifest": "https://github.com/arcanolab/arcano-expand-header-buttons/releases/latest/download/module.json",
+      "url": "https://github.com/arcanolab/arcano-expand-header-buttons",
+      "summary": {
+        "en": "Shows the buttons hidden in the three-dot header menu as always-visible icons: a bar on the left or right of the window, or inline in the header.",
+        "pt-BR": "Mostra os botões escondidos no menu de três pontos como ícones sempre visíveis: numa barra à esquerda ou à direita da janela, ou no próprio cabeçalho."
+      },
+      "changelog": [
+        {
+          "version": "1.0.1",
+          "date": "2026-11-20",
+          "kind": "update",
+          "notes": {
+            "en": [
+              "Foundry VTT v14 support",
+              "Button position: left bar, right bar or inside the window header",
+              "Sheets-only mode, check all / uncheck all",
+              "Settings apply immediately",
+              "English and Brazilian Portuguese translations"
+            ],
+            "pt-BR": [
+              "Suporte ao Foundry VTT v14",
+              "Posição dos botões: barra esquerda, barra direita ou no cabeçalho da janela",
+              "Modo só nas fichas, marcar e desmarcar todos",
+              "As configurações valem na hora",
+              "Traduções em inglês e português do Brasil"
+            ]
+          }
+        }
+      ],
+      "repo": "arcanolab/arcano-expand-header-buttons"
+    }
+  ]
+}

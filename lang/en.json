@@ -1,0 +1,114 @@
+{
+  "ALHUB": {
+    "title": "Arcano Lab Hub",
+    "since": "Patron since {date}",
+    "founder": "Founder",
+    "guest": "Guest",
+    "notConnected": "Not connected",
+    "tier": {
+      "free": "Follower",
+      "apprentice": "Apprentice",
+      "master": "Master",
+      "archmage": "Archmage"
+    },
+    "tab": {
+      "lab": "The Lab",
+      "news": "Lab notes",
+      "account": "Account"
+    },
+    "openPatreon": "Arcano Lab on Patreon",
+    "online": "online",
+    "offline": "offline · cached",
+    "connect": {
+      "kicker": "Experiment #00 · Welcome",
+      "title": "Your <em>Lab</em> key, in one click.",
+      "step1": "<b>Sign in with Patreon.</b> We only read your name and your membership.",
+      "step2": "<b>Get your personal install links</b> for every module your tier unlocks.",
+      "step3": "<b>Updates keep flowing</b> while you're a patron. Cancel and you keep what you have.",
+      "button": "Connect Patreon",
+      "note": "free for followers too",
+      "waiting": "Waiting for Patreon in the new tab…",
+      "fine": "Arcano Lab never sees your Patreon password. You can disconnect at any time.",
+      "latest": "Latest experiment"
+    },
+    "cancel": "Cancel",
+    "free": "Free",
+    "lab": {
+      "kicker": "On the shelf: {n}",
+      "title": "The <em>Lab</em>",
+      "note": "{n} update(s) waiting"
+    },
+    "filter": {
+      "all": "All",
+      "installed": "Installed",
+      "update": "Updates",
+      "missing": "Not installed",
+      "locked": "Locked"
+    },
+    "state": {
+      "ok": "Up to date · v{v}",
+      "inactive": "Installed, not active",
+      "update": "v{from} → v{to}",
+      "missing": "Not installed",
+      "locked": "Needs {tier}"
+    },
+    "act": {
+      "news": "Notes",
+      "activate": "Activate",
+      "update": "Update",
+      "install": "Install link",
+      "unlock": "Unlock"
+    },
+    "badge": {
+      "update": "New version"
+    },
+    "copied": "Copied!",
+    "howto": "<b>{title}</b> — install link copied. Open <code>Setup → Add-on Modules → Install Module</code>, paste it in <code>Manifest URL</code> and click Install. Updates will show up there too.",
+    "update": {
+      "title": "Update {title}",
+      "body": "Foundry updates modules from the Setup screen: <b>Setup → Add-on Modules → Update All</b> (or the update button next to {title}). Your link stays valid while you're a patron."
+    },
+    "news": {
+      "kicker": "Changelog",
+      "title": "Lab <em>notes</em>",
+      "lead": "What changed in every experiment, newest first."
+    },
+    "kind": {
+      "release": "New experiment",
+      "update": "Update",
+      "fix": "Fixes"
+    },
+    "account": {
+      "kicker": "Your membership",
+      "title": "Account",
+      "name": "Patreon",
+      "tier": "Tier",
+      "status": "Status",
+      "active": "Active patron",
+      "checked": "Last checked",
+      "key": "Lab key",
+      "refresh": "Check again",
+      "logout": "Disconnect",
+      "fine": "Your Lab key is personal: it is part of your install links. Don't share it — if it leaks, disconnect and connect again to get a new one."
+    },
+    "toast": {
+      "updates": "Arcano Lab: {n} module update(s) available. Open the Hub to see them.",
+      "connected": "Connected to Patreon as {name} ({tier}).",
+      "expired": "Your Patreon membership couldn't be confirmed. Updates are paused until you connect again.",
+      "loginFailed": "Patreon sign-in didn't finish. Try again.",
+      "offline": "Can't reach the Arcano Lab server right now — showing the last saved list."
+    },
+    "settings": {
+      "open": "Open the Hub",
+      "openHint": "Your Arcano Lab modules, install links and updates.",
+      "server": {
+        "name": "Hub server",
+        "hint": "Address of the Arcano Lab server. Only change this if Arcano Lab asks you to."
+      },
+      "notify": {
+        "name": "Update notices",
+        "hint": "Tell the GM when an Arcano Lab module has a new version."
+      }
+    }
+  }
+}

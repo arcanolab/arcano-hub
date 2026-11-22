@@ -1,0 +1,114 @@
+{
+  "ALHUB": {
+    "title": "Arcano Lab Hub",
+    "since": "Patrono desde {date}",
+    "founder": "Founder",
+    "guest": "Visitante",
+    "notConnected": "Não conectado",
+    "tier": {
+      "free": "Seguidor",
+      "apprentice": "Apprentice",
+      "master": "Master",
+      "archmage": "Archmage"
+    },
+    "tab": {
+      "lab": "O Laboratório",
+      "news": "Anotações",
+      "account": "Conta"
+    },
+    "openPatreon": "Arcano Lab no Patreon",
+    "online": "online",
+    "offline": "offline · lista salva",
+    "connect": {
+      "kicker": "Experimento #00 · Boas-vindas",
+      "title": "Sua chave do <em>Lab</em>, em um clique.",
+      "step1": "<b>Entre com o Patreon.</b> Só lemos seu nome e sua assinatura.",
+      "step2": "<b>Receba seus links de instalação</b> de cada módulo que o seu tier libera.",
+      "step3": "<b>Os updates continuam chegando</b> enquanto você assina. Se cancelar, fica com o que já tem.",
+      "button": "Conectar Patreon",
+      "note": "grátis para seguidores também",
+      "waiting": "Esperando o Patreon na nova aba…",
+      "fine": "O Arcano Lab nunca vê sua senha do Patreon. Você pode desconectar quando quiser.",
+      "latest": "Último experimento"
+    },
+    "cancel": "Cancelar",
+    "free": "Grátis",
+    "lab": {
+      "kicker": "Na prateleira: {n}",
+      "title": "O <em>Laboratório</em>",
+      "note": "{n} update(s) esperando"
+    },
+    "filter": {
+      "all": "Todos",
+      "installed": "Instalados",
+      "update": "Updates",
+      "missing": "Não instalados",
+      "locked": "Bloqueados"
+    },
+    "state": {
+      "ok": "Em dia · v{v}",
+      "inactive": "Instalado, desativado",
+      "update": "v{from} → v{to}",
+      "missing": "Não instalado",
+      "locked": "Requer {tier}"
+    },
+    "act": {
+      "news": "Novidades",
+      "activate": "Ativar",
+      "update": "Atualizar",
+      "install": "Link de instalação",
+      "unlock": "Desbloquear"
+    },
+    "badge": {
+      "update": "Versão nova"
+    },
+    "copied": "Copiado!",
+    "howto": "<b>{title}</b> — link de instalação copiado. Abra <code>Configuração → Módulos → Instalar Módulo</code>, cole em <code>URL do Manifest</code> e clique em Instalar. Os updates aparecem lá também.",
+    "update": {
+      "title": "Atualizar {title}",
+      "body": "O Foundry atualiza módulos pela tela de Configuração: <b>Configuração → Módulos → Atualizar Todos</b> (ou o botão de update ao lado de {title}). Seu link continua valendo enquanto você assina."
+    },
+    "news": {
+      "kicker": "Changelog",
+      "title": "<em>Anotações</em> do Lab",
+      "lead": "O que mudou em cada experimento, do mais novo para o mais antigo."
+    },
+    "kind": {
+      "release": "Experimento novo",
+      "update": "Update",
+      "fix": "Correções"
+    },
+    "account": {
+      "kicker": "Sua assinatura",
+      "title": "Conta",
+      "name": "Patreon",
+      "tier": "Tier",
+      "status": "Situação",
+      "active": "Patrono ativo",
+      "checked": "Última conferência",
+      "key": "Chave do Lab",
+      "refresh": "Conferir de novo",
+      "logout": "Desconectar",
+      "fine": "Sua chave do Lab é pessoal: ela faz parte dos seus links de instalação. Não compartilhe — se vazar, desconecte e conecte de novo para gerar outra."
+    },
+    "toast": {
+      "updates": "Arcano Lab: {n} update(s) de módulo disponível(is). Abra o Hub para ver.",
+      "connected": "Conectado ao Patreon como {name} ({tier}).",
+      "expired": "Não deu para confirmar sua assinatura no Patreon. Os updates ficam pausados até você conectar de novo.",
+      "loginFailed": "O login no Patreon não terminou. Tente de novo.",
+      "offline": "Sem conexão com o servidor do Arcano Lab agora — mostrando a última lista salva."
+    },
+    "settings": {
+      "open": "Abrir o Hub",
+      "openHint": "Seus módulos do Arcano Lab, links de instalação e updates.",
+      "server": {
+        "name": "Servidor do Hub",
+        "hint": "Endereço do servidor do Arcano Lab. Só mude se o Arcano Lab pedir."
+      },
+      "notify": {
+        "name": "Avisos de update",
+        "hint": "Avisa o mestre quando um módulo do Arcano Lab tiver versão nova."
+      }
+    }
+  }
+}

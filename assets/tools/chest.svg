@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <!-- Baú de tesouro -->
+  <path d="M6 23v-5.5C6 12.3 10.3 8 15.500 8h17C37.700 8 42 12.3 42 17.500V23Z" fill="#5B36B0" stroke="#E2B85C" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="6" y="23" width="36" height="18" rx="2.5" fill="#7C4DDB" stroke="#E2B85C" stroke-width="2.5" stroke-linejoin="round"/>
+  <g stroke="#E2B85C" stroke-width="2.5">
+    <path d="M13.500 8.300V41M34.500 8.300V41"/>
+  </g>
+  <rect x="19.500" y="18.500" width="9" height="11" rx="2" fill="#E2B85C" stroke="#151021" stroke-width="1.8"/>
+  <path d="M24 22a1.700 1.700 0 0 0-1 3.100V27h2v-1.900A1.700 1.700 0 0 0 24 22Z" fill="#3A2470"/>
+  <path d="M39.500 2l1.300 3.200L44 6.500l-3.200 1.300L39.500 11l-1.300-3.200L35 6.500l3.200-1.300Z" fill="#F5DC9A"/>
+</svg>

@@ -1,0 +1,508 @@
+/* Arcano Lab Hub — "Caderno de Laboratório" (design system Arcano Lab v3)
+ * Tudo fica sob .arcanolab para não vazar para o resto do Foundry. */
+
+@font-face { font-family: "AL Fraunces"; src: url("../fonts/fraunces-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+@font-face { font-family: "AL Fraunces"; src: url("../fonts/fraunces-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+@font-face { font-family: "AL Fraunces"; src: url("../fonts/fraunces-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+@font-face { font-family: "AL Fraunces"; src: url("../fonts/fraunces-latin-600-italic.woff2") format("woff2"); font-weight: 600; font-style: italic; }
+@font-face { font-family: "AL Plex Sans"; src: url("../fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "AL Plex Sans"; src: url("../fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "AL Plex Sans"; src: url("../fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; }
+@font-face { font-family: "AL Plex Mono"; src: url("../fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "AL Plex Mono"; src: url("../fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; }
+@font-face { font-family: "AL Kalam"; src: url("../fonts/kalam-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
+
+.arcanolab {
+  --al-bg-deep: #0c0a12;
+  --al-bg-base: #151021;
+  --al-bg-raised: #1c1630;
+  --al-bg-overlay: #251d3b;
+  --al-grid-line: rgba(196, 181, 253, 0.07);
+  --al-margin-line: rgba(226, 184, 92, 0.45);
+  --al-border-subtle: #211a33;
+  --al-border: #3a3058;
+  --al-border-strong: #6b5e96;
+  --al-text: #ece8f5;
+  --al-text-2: #a39bbf;
+  --al-text-off: #5a5175;
+  --al-violet-deep: #4c1d95;
+  --al-violet: #7c4ddb;
+  --al-violet-light: #c4b5fd;
+  --al-violet-muted: rgba(124, 77, 219, 0.16);
+  --al-gold: #e2b85c;
+  --al-gold-light: #f5dc9a;
+  --al-tape: rgba(245, 220, 154, 0.55);
+  --al-paper: #f4efe6;
+  --al-on-paper: #1c1530;
+  --al-panel-dark: #151021;
+  --al-danger: #e05c7a;
+  --al-success: #34c9a0;
+  --al-warning: #e8894a;
+  --al-display: "AL Fraunces", Georgia, serif;
+  --al-sans: "AL Plex Sans", system-ui, sans-serif;
+  --al-mono: "AL Plex Mono", Consolas, monospace;
+  --al-hand: "AL Kalam", "Segoe Print", cursive;
+}
+
+/* ---------- Janela (ApplicationV2) ---------- */
+.application.arcanolab.al-hub {
+  background: var(--al-bg-base);
+  border: 1.5px solid var(--al-border);
+  border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(226, 184, 92, 0.08);
+  color: var(--al-text);
+  overflow: hidden;
+}
+.application.arcanolab.al-hub > .window-header {
+  background: var(--al-bg-deep);
+  border-bottom: 1.5px dashed var(--al-border);
+  color: var(--al-text-2);
+  font: 500 11px/14px var(--al-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0 12px;
+  height: 38px;
+}
+.application.arcanolab.al-hub > .window-header .window-title { font: inherit; }
+.application.arcanolab.al-hub > .window-header .window-icon { color: var(--al-gold); }
+.application.arcanolab.al-hub > .window-content {
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.arcanolab .al-hub-body {
+  display: grid;
+  grid-template-columns: 232px 1fr;
+  height: 100%;
+  min-height: 0;
+  font: 400 13px/20px var(--al-sans);
+  color: var(--al-text);
+}
+.arcanolab *, .arcanolab *::before, .arcanolab *::after { box-sizing: border-box; }
+.arcanolab h1, .arcanolab h2, .arcanolab h3, .arcanolab p { margin: 0; border: none; }
+/* só os botões do conteúdo: os do cabeçalho (minimizar, fechar) são ícones do Font Awesome */
+.arcanolab .window-content button { font-family: var(--al-mono); }
+.arcanolab a { color: var(--al-violet-light); text-decoration: none; }
+.arcanolab a:hover { text-decoration: underline; text-shadow: none; }
+
+/* ---------- Barra lateral ---------- */
+.arcanolab .al-side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 20px 16px 16px;
+  background: var(--al-bg-deep);
+  border-right: 1.5px dashed var(--al-border);
+  min-height: 0;
+}
+.arcanolab .al-brand { display: flex; align-items: center; gap: 10px; }
+.arcanolab .al-brand img { width: 44px; height: 44px; border: none; flex: none; }
+.arcanolab .al-wordmark { font: 600 24px/1 var(--al-display); letter-spacing: -0.01em; color: var(--al-text); }
+.arcanolab .al-wordmark em { font-style: italic; color: var(--al-gold); }
+.arcanolab .al-wordmark small {
+  display: block;
+  margin-top: 4px;
+  font: 500 10px/1 var(--al-mono);
+  letter-spacing: 0.22em;
+  color: var(--al-text-2);
+  text-transform: uppercase;
+}
+
+/* Cartão do patrono */
+.arcanolab .al-patron {
+  position: relative;
+  padding: 14px 12px 12px;
+  background: var(--al-bg-raised);
+  border: 1.5px solid var(--al-border);
+  border-radius: 8px;
+}
+.arcanolab .al-patron-top { display: flex; align-items: center; gap: 10px; }
+.arcanolab .al-avatar {
+  width: 38px; height: 38px; flex: none;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--al-violet);
+  color: #fff;
+  font: 600 17px/1 var(--al-display);
+  box-shadow: 0 0 0 2px var(--al-bg-raised), 0 0 0 3.5px var(--al-gold);
+  overflow: hidden;
+}
+.arcanolab .al-avatar img { width: 100%; height: 100%; object-fit: cover; border: none; }
+.arcanolab .al-patron-name { font: 600 14px/1.2 var(--al-sans); color: var(--al-text); }
+.arcanolab .al-patron-sub { font: 400 11px/1.3 var(--al-mono); color: var(--al-text-2); }
+.arcanolab .al-tier {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  margin-top: 12px;
+  padding: 0 12px 0 24px;
+  background: var(--al-paper);
+  color: var(--al-on-paper);
+  font: 600 13px/1 var(--al-display);
+  clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%);
+}
+.arcanolab .al-tier::before {
+  content: "";
+  position: absolute;
+  left: 10px; top: calc(50% - 3.5px);
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--al-bg-raised);
+}
+.arcanolab .al-tier--gold { background: var(--al-gold); color: var(--al-bg-deep); }
+.arcanolab .al-stamp {
+  position: absolute;
+  right: 8px; bottom: 10px;
+  padding: 3px 7px;
+  border: 2px solid var(--al-gold);
+  border-radius: 2px;
+  color: var(--al-gold);
+  font: 500 9px/1.2 var(--al-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transform: rotate(-7deg);
+  opacity: 0.9;
+}
+
+/* Navegação */
+.arcanolab .al-nav { display: flex; flex-direction: column; gap: 2px; }
+.arcanolab .al-nav button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 36px;
+  padding: 0 10px;
+  background: none;
+  border: none;
+  border-radius: 2px;
+  color: var(--al-text-2);
+  font: 500 11px/1 var(--al-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: none;
+}
+.arcanolab .al-nav button i { width: 16px; text-align: center; color: var(--al-text-off); }
+.arcanolab .al-nav button:hover { background: var(--al-bg-overlay); color: var(--al-text); }
+.arcanolab .al-nav button.active { background: var(--al-violet-muted); color: var(--al-violet-light); box-shadow: inset 2px 0 0 var(--al-violet); }
+.arcanolab .al-nav button.active i { color: var(--al-violet-light); }
+.arcanolab .al-nav button:disabled { opacity: 0.4; cursor: default; background: none; box-shadow: none; color: var(--al-text-2); }
+.arcanolab .al-v { text-transform: none; }
+.arcanolab .al-nav .al-count {
+  margin-left: auto;
+  min-width: 18px; height: 18px;
+  padding: 0 5px;
+  display: grid; place-items: center;
+  border-radius: 9px;
+  background: var(--al-warning);
+  color: var(--al-bg-deep);
+  font: 600 10px/1 var(--al-mono);
+  letter-spacing: 0;
+}
+.arcanolab .al-side-foot {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1.5px dashed var(--al-border);
+}
+.arcanolab .al-side-foot .al-meta { font: 400 11px/1.4 var(--al-mono); color: var(--al-text-off); }
+
+/* ---------- Área principal: página do caderno ---------- */
+.arcanolab .al-main {
+  position: relative;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 26px 28px 28px 100px;
+  background-color: var(--al-bg-base);
+  background-image:
+    linear-gradient(90deg, transparent 71px, var(--al-margin-line) 71px, var(--al-margin-line) 72.5px, transparent 72.5px),
+    linear-gradient(var(--al-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--al-grid-line) 1px, transparent 1px);
+  background-size: 100% 100%, 24px 24px, 24px 24px;
+  background-attachment: local;
+  scrollbar-width: thin;
+  scrollbar-color: var(--al-border-strong) transparent;
+}
+.arcanolab .al-page-head { display: flex; align-items: flex-end; gap: 16px; margin-bottom: 6px; }
+.arcanolab .al-kicker {
+  font: 500 11px/14px var(--al-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--al-text-2);
+}
+.arcanolab .al-title { font: 600 34px/1.05 var(--al-display); letter-spacing: -0.01em; color: var(--al-text); margin-top: 4px; }
+.arcanolab .al-title em { font-style: italic; color: var(--al-gold); }
+.arcanolab .al-note {
+  display: inline-block;
+  font: 400 17px/1.25 var(--al-hand);
+  color: var(--al-gold-light);
+  transform: rotate(-2deg);
+  white-space: nowrap;
+}
+.arcanolab .al-lead { max-width: 560px; color: var(--al-text-2); margin-bottom: 18px; }
+
+/* Filtros */
+.arcanolab .al-filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 22px; }
+.arcanolab .al-chip {
+  height: 28px;
+  padding: 0 12px;
+  border: 1.5px dashed var(--al-border-strong);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--al-text-2);
+  font: 500 11px/1 var(--al-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: auto;
+  flex: none;
+}
+.arcanolab .al-chip:hover { color: var(--al-text); border-color: var(--al-text-2); }
+.arcanolab .al-chip.active { border-style: solid; border-color: var(--al-violet-light); color: var(--al-violet-light); background: var(--al-violet-muted); }
+.arcanolab .al-chip b { font-weight: 500; opacity: 0.7; margin-left: 4px; }
+
+/* ---------- Cartões de espécime ---------- */
+.arcanolab .al-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+  gap: 26px 22px;
+}
+.arcanolab .al-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  background: var(--al-paper);
+  color: var(--al-on-paper);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(28, 21, 48, 0.1), 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.arcanolab .al-card:nth-child(3n+1) { transform: rotate(-0.6deg); }
+.arcanolab .al-card:nth-child(3n+2) { transform: rotate(0.5deg); }
+.arcanolab .al-card:hover { transform: translateY(-3px) rotate(0deg); box-shadow: 0 0 0 1px rgba(28, 21, 48, 0.1), 0 12px 26px rgba(0, 0, 0, 0.45); }
+.arcanolab .al-tape {
+  position: absolute;
+  top: -11px; left: calc(50% - 42px);
+  width: 84px; height: 22px;
+  background: var(--al-tape);
+  transform: rotate(-3deg);
+  pointer-events: none;
+}
+.arcanolab .al-card:nth-child(even) .al-tape { transform: rotate(2.5deg); left: calc(50% - 30px); }
+.arcanolab .al-card-head,
+.arcanolab .al-card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 500 10.5px/1 var(--al-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(28, 21, 48, 0.7);
+}
+.arcanolab .al-art {
+  position: relative;
+  height: 112px;
+  display: grid;
+  place-items: center;
+  background: var(--al-panel-dark);
+  background-image:
+    radial-gradient(circle at 50% 60%, rgba(124, 77, 219, 0.35), transparent 60%),
+    linear-gradient(rgba(196, 181, 253, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196, 181, 253, 0.06) 1px, transparent 1px);
+  background-size: 100% 100%, 12px 12px, 12px 12px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.arcanolab .al-art img { width: 76px; height: 76px; border: none; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5)); }
+.arcanolab .al-art .al-free {
+  position: absolute; left: 8px; top: 8px;
+  padding: 3px 6px;
+  background: var(--al-success);
+  color: var(--al-bg-deep);
+  font: 600 9px/1 var(--al-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+.arcanolab .al-card-name { font: 600 21px/1.1 var(--al-display); color: var(--al-on-paper); letter-spacing: -0.01em; }
+.arcanolab .al-card-desc { font: 400 12.5px/18px var(--al-sans); color: rgba(28, 21, 48, 0.78); min-height: 36px; }
+.arcanolab .al-card-foot { border-top: 1.5px solid var(--al-on-paper); padding-top: 9px; letter-spacing: 0.08em; }
+.arcanolab .al-card-actions { display: flex; gap: 6px; }
+
+.arcanolab .al-status { display: inline-flex; align-items: center; gap: 6px; font: 500 10.5px/1 var(--al-mono); letter-spacing: 0.06em; text-transform: none; }
+.arcanolab .al-status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.arcanolab .al-status--ok { color: #16704f; }
+.arcanolab .al-status--warn { color: #9a4c14; }
+.arcanolab .al-status--off { color: rgba(28, 21, 48, 0.55); }
+.arcanolab .al-status--off::before { background: none; border: 1.5px solid currentColor; }
+.arcanolab .al-status--lock { color: #4c1d95; }
+
+/* Botões */
+.arcanolab .al-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: auto;
+  height: 30px;
+  padding: 0 12px;
+  border: 1.5px solid transparent;
+  border-radius: 2px;
+  font: 500 10.5px/1 var(--al-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: none;
+  transition: filter 150ms ease, background 150ms ease, color 150ms ease;
+}
+.arcanolab .al-btn i { font-size: 11px; }
+.arcanolab .al-btn--primary { background: var(--al-violet); border-color: var(--al-violet); color: #fff; }
+.arcanolab .al-btn--primary:hover { filter: brightness(1.15); }
+.arcanolab .al-btn--secondary { background: transparent; border-color: var(--al-violet-light); color: var(--al-violet-light); }
+.arcanolab .al-btn--secondary:hover { background: var(--al-violet-muted); }
+.arcanolab .al-card .al-btn--secondary { border-color: #6a3bc9; color: #5b2bb8; }
+.arcanolab .al-card .al-btn--secondary:hover { background: rgba(106, 59, 201, 0.1); }
+.arcanolab .al-btn--ghost { background: transparent; border: 1.5px dashed var(--al-border-strong); color: var(--al-text-2); }
+.arcanolab .al-card .al-btn--ghost { border-color: rgba(28, 21, 48, 0.35); color: rgba(28, 21, 48, 0.75); }
+.arcanolab .al-btn--ghost:hover { color: var(--al-text); border-color: var(--al-text-2); }
+.arcanolab .al-card .al-btn--ghost:hover { color: var(--al-on-paper); border-color: var(--al-on-paper); }
+.arcanolab .al-btn--patreon { background: #ff424d; border-color: #ff424d; color: #fff; height: 40px; padding: 0 18px; font-size: 12px; }
+.arcanolab .al-btn--patreon:hover { filter: brightness(1.08); }
+.arcanolab .al-btn--block { width: 100%; }
+.arcanolab .al-btn.is-done { background: var(--al-success); border-color: var(--al-success); color: var(--al-bg-deep); }
+
+/* Bloqueado */
+.arcanolab .al-card.is-locked .al-art img { filter: grayscale(0.7) brightness(0.6); }
+.arcanolab .al-lock {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  background: rgba(12, 10, 18, 0.55);
+  color: var(--al-gold-light);
+  font: 500 10px/1.2 var(--al-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.arcanolab .al-lock i { font-size: 20px; color: var(--al-gold); }
+.arcanolab .al-card.is-update { box-shadow: 0 0 0 2px var(--al-warning), 0 6px 18px rgba(0, 0, 0, 0.35); }
+.arcanolab .al-new {
+  position: absolute; right: -8px; top: 44px; z-index: 1;
+  padding: 4px 8px;
+  background: var(--al-warning);
+  color: var(--al-bg-deep);
+  font: 600 9.5px/1 var(--al-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transform: rotate(4deg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- Tela de conectar ---------- */
+.arcanolab .al-connect {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 32px;
+  align-items: center;
+  min-height: 100%;
+}
+.arcanolab .al-connect .al-title { font-size: 40px; }
+.arcanolab .al-steps { list-style: none; margin: 18px 0 22px; padding: 0; display: flex; flex-direction: column; gap: 12px; counter-reset: step; }
+.arcanolab .al-steps li { display: flex; gap: 12px; align-items: flex-start; color: var(--al-text-2); counter-increment: step; }
+.arcanolab .al-steps li::before {
+  content: counter(step, decimal-leading-zero);
+  flex: none;
+  width: 30px; height: 22px;
+  display: grid; place-items: center;
+  border: 1.5px solid var(--al-gold);
+  border-radius: 2px;
+  color: var(--al-gold);
+  font: 500 11px/1 var(--al-mono);
+}
+.arcanolab .al-steps b { color: var(--al-text); font-weight: 600; }
+.arcanolab .al-connect-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.arcanolab .al-fine { margin-top: 14px; font-size: 12px; color: var(--al-text-off); }
+.arcanolab .al-specimen-big {
+  position: relative;
+  padding: 16px;
+  background: var(--al-paper);
+  color: var(--al-on-paper);
+  border-radius: 8px;
+  transform: rotate(2deg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+.arcanolab .al-specimen-big .al-art { height: 190px; }
+.arcanolab .al-specimen-big .al-art img { width: 132px; height: 132px; }
+.arcanolab .al-specimen-big .al-card-name { font-size: 26px; margin-top: 10px; }
+.arcanolab .al-specimen-big .al-card-foot { margin-top: 10px; }
+.arcanolab .al-waiting { display: inline-flex; align-items: center; gap: 10px; color: var(--al-text-2); font: 400 12px var(--al-mono); }
+.arcanolab .al-waiting i { color: var(--al-violet-light); }
+
+/* ---------- Novidades ---------- */
+.arcanolab .al-log { display: flex; flex-direction: column; gap: 0; max-width: 640px; }
+.arcanolab .al-log-item { display: grid; grid-template-columns: 96px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px dashed var(--al-border); }
+.arcanolab .al-log-date { font: 400 12px/1.4 var(--al-mono); color: var(--al-text-2); }
+.arcanolab .al-log-date b { display: block; color: var(--al-gold); font-weight: 500; letter-spacing: 0.1em; }
+.arcanolab .al-log-title { font: 600 18px/1.2 var(--al-display); color: var(--al-text); margin-bottom: 4px; }
+.arcanolab .al-log-title .al-ver { font: 500 11px var(--al-mono); color: var(--al-violet-light); margin-left: 8px; letter-spacing: 0.06em; }
+.arcanolab .al-log ul { margin: 6px 0 0; padding-left: 18px; color: var(--al-text-2); }
+.arcanolab .al-log li { margin: 2px 0; }
+
+/* ---------- Conta ---------- */
+.arcanolab .al-panel { padding: 18px; background: var(--al-bg-raised); border: 1.5px solid var(--al-border); border-radius: 8px; max-width: 560px; }
+.arcanolab .al-rows { display: grid; grid-template-columns: 150px 1fr; gap: 10px 16px; margin: 12px 0 16px; }
+.arcanolab .al-rows dt { font: 500 11px/20px var(--al-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--al-text-2); }
+.arcanolab .al-rows dd { margin: 0; color: var(--al-text); }
+.arcanolab .al-key { font: 400 12px var(--al-mono); color: var(--al-violet-light); }
+
+/* ---------- Toast "link copiado" e diálogo de instalação ---------- */
+.arcanolab .al-howto { margin: -6px 0 22px; padding: 12px 14px; border: 1.5px dashed var(--al-gold); border-radius: 8px; color: var(--al-text-2); max-width: 680px; }
+.arcanolab .al-howto b { color: var(--al-gold-light); font-weight: 500; }
+.arcanolab .al-howto code { font: 400 12px var(--al-mono); color: var(--al-violet-light); background: var(--al-bg-deep); padding: 1px 5px; border-radius: 2px; }
+
+/* Botão no sidebar de Configurações */
+#settings .al-sidebar-btn { display: flex; align-items: center; justify-content: center; gap: 8px; }
+#settings .al-sidebar-btn img { width: 18px; height: 18px; border: none; }
+#settings .al-sidebar-btn .al-count { background: #e8894a; color: #0c0a12; border-radius: 9px; padding: 0 6px; font: 600 10px/16px monospace; }
+
+/* ---------- Ícone na barra de controles da esquerda ---------- */
+#scene-controls .al-hub-control { display: grid; place-items: center; padding: 0; }
+#scene-controls .al-hub-control::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  background: url("../assets/arcanolab.svg") center / contain no-repeat;
+}
+#scene-controls .al-hub-control:hover::before,
+#scene-controls .al-hub-control[aria-pressed="true"]::before { filter: drop-shadow(0 0 4px rgba(226, 184, 92, 0.8)); }
+
+/* Ferramenta "Hub" dentro do grupo: núcleo do Lab com os módulos ligados em volta */
+#scene-controls .al-hub-tool { display: grid; place-items: center; padding: 0; }
+#scene-controls .al-hub-tool::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background: url("../assets/hub-control.svg") center / contain no-repeat;
+}
+#scene-controls .al-hub-tool:hover::before { filter: drop-shadow(0 0 4px rgba(226, 184, 92, 0.8)); }
+
+/* Cartão de visitante: clicável, volta para a tela de conectar */
+.arcanolab .al-patron--guest { cursor: pointer; }
+.arcanolab .al-patron--guest:hover { border-color: var(--al-border-strong); }
+
+/* Ferramentas dos outros módulos com ícone em imagem (ver toolIcon no hub.mjs) */
+#scene-controls .al-tool-img { display: grid; place-items: center; padding: 0; }
+#scene-controls .al-tool-img::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background: center / contain no-repeat;
+}
+#scene-controls .al-tool-img:hover::before { filter: drop-shadow(0 0 4px rgba(226, 184, 92, 0.8)); }
