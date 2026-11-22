@@ -255,6 +255,7 @@ class ArcanoHubApp extends ApplicationV2 {
 
   static #onTab(event, target) {
     this.tab = target.dataset.tab;
+    this.filter = "all";
     this.copied = null;
     this.render();
   }

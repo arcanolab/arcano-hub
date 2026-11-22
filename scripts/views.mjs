@@ -35,8 +35,10 @@ export function isNewer(a, b) {
 /** Visitante vê as boas-vindas por padrão, mas pode abrir o Laboratório e as Anotações (só a Conta exige login) */
 function showConnect(s) {
   if ( s.patron || !s.login ) return false;
-  return !["lab", "news"].includes(s.tab);
+  return !["lab", "maps", "news"].includes(s.tab);
 }
+
+const isMap = m => m.category === "maps";
 
 export function renderHub(s, t) {
   return `
@@ -50,7 +52,7 @@ export function renderHub(s, t) {
 
 function renderSide(s, t) {
   const p = s.patron;
-  const updates = s.catalog.filter(m => moduleState(m, s.local[m.id], p) === "update").length;
+  const updatesIn = maps => s.catalog.filter(m => (isMap(m) === maps) && (moduleState(m, s.local[m.id], p) === "update")).length;
   const tab = (id, icon, label, count) => `
     <button type="button" class="${s.tab === id ? "active" : ""}" data-action="hub-tab" data-tab="${id}" ${p || (id !== "account") ? "" : "disabled"}>
       <i class="fa-solid ${icon}"></i>${esc(label)}${count ? `<span class="al-count">${count}</span>` : ""}
@@ -85,7 +87,8 @@ function renderSide(s, t) {
     </div>`}
 
     <nav class="al-nav">
-      ${tab("lab", "fa-flask", t("tab.lab"), updates)}
+      ${tab("lab", "fa-flask", t("tab.lab"), updatesIn(false))}
+      ${s.catalog.some(isMap) ? tab("maps", "fa-map", t("tab.maps"), updatesIn(true)) : ""}
       ${tab("news", "fa-scroll", t("tab.news"))}
       ${s.login ? tab("account", "fa-id-card", t("tab.account")) : ""}
     </nav>
@@ -140,11 +143,13 @@ function renderConnect(s, t) {
 function renderTab(s, t) {
   if ( s.tab === "news" ) return renderNews(s, t);
   if ( s.tab === "account" && s.patron ) return renderAccount(s, t);
-  return renderLab(s, t);
+  return renderLab(s, t, s.tab === "maps");
 }
 
-function renderLab(s, t) {
-  const rows = s.catalog.map(m => ({m, state: moduleState(m, s.local[m.id], s.patron)}));
+/** Uma prateleira do catálogo: os módulos ou os mapas ("category": "maps") */
+function renderLab(s, t, maps = false) {
+  const ns = maps ? "maps" : "lab";
+  const rows = s.catalog.filter(m => isMap(m) === maps).map(m => ({m, state: moduleState(m, s.local[m.id], s.patron)}));
   const counts = {all: rows.length};
   for ( const r of rows ) counts[r.state] = (counts[r.state] ?? 0) + 1;
   counts.installed = (counts.ok ?? 0) + (counts.update ?? 0) + (counts.inactive ?? 0);
@@ -152,15 +157,12 @@ function renderLab(s, t) {
   const show = rows.filter(r => s.filter === "all" || r.state === s.filter
     || (s.filter === "installed" && ["ok", "update", "inactive"].includes(r.state)));
   const updates = counts.update ?? 0;
-  // "category": "maps" no catálogo põe o item na subseção de mapas
-  const maps = show.filter(r => r.m.category === "maps");
-  const modules = show.filter(r => r.m.category !== "maps");
 
   return `
   <div class="al-page-head">
     <div>
-      <div class="al-kicker">${esc(t("lab.kicker"))}</div>
-      <h1 class="al-title">${t("lab.title", {n: rows.length})}</h1>
+      <div class="al-kicker">${esc(t(`${ns}.kicker`))}</div>
+      <h1 class="al-title">${rows.length === 1 ? t(`${ns}.titleOne`) : t(`${ns}.title`, {n: rows.length})}</h1>
     </div>
     ${updates ? `<span class="al-note">← ${esc(t("lab.note", {n: updates}))}</span>` : ""}
   </div>
@@ -169,10 +171,7 @@ function renderLab(s, t) {
       `<button type="button" class="al-chip ${s.filter === k ? "active" : ""}" data-action="filter" data-filter="${k}">${esc(t(label))}<b>${counts[k] ?? 0}</b></button>`).join("")}
   </div>
   ${s.copied ? `<div class="al-howto">${t("howto", {title: esc(s.copied)})}</div>` : ""}
-  ${modules.length ? `<div class="al-grid">${modules.map(r => renderCard(s, t, r.m, r.state)).join("")}</div>` : ""}
-  ${maps.length ? `
-  <h2 class="al-section"><i class="fa-solid fa-map"></i>${esc(t("lab.maps"))}<b>${maps.length}</b></h2>
-  <div class="al-grid">${maps.map(r => renderCard(s, t, r.m, r.state)).join("")}</div>` : ""}`;
+  <div class="al-grid">${show.map(r => renderCard(s, t, r.m, r.state)).join("")}</div>`;
 }
 
 function renderCard(s, t, m, state) {

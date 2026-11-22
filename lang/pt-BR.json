@@ -12,9 +12,10 @@
       "archmage": "Archmage"
     },
     "tab": {
-      "lab": "Laboratório",
+      "lab": "Módulos",
       "news": "Anotações",
-      "account": "Conta"
+      "account": "Conta",
+      "maps": "Mapas"
     },
     "openPatreon": "Arcano Lab no Patreon",
     "online": "online",
@@ -35,9 +36,9 @@
     "free": "Grátis",
     "lab": {
       "kicker": "Experimentos na prateleira",
-      "title": "{n} <em>Laboratório</em>",
+      "title": "{n} <em>Módulos</em>",
       "note": "{n} update(s) esperando",
-      "maps": "Mapas"
+      "titleOne": "1 <em>Módulo</em>"
     },
     "filter": {
       "all": "Todos",
@@ -120,6 +121,11 @@
       "by": "por Arcano Lab",
       "tagline": "Módulos novos para Foundry todo mês.",
       "cta": "Apoie no Patreon"
+    },
+    "maps": {
+      "kicker": "Cartografia do Lab",
+      "title": "{n} <em>Mapas</em>",
+      "titleOne": "1 <em>Mapa</em>"
     }
   }
 }
